@@ -38,20 +38,22 @@
   </nav>
   <!-- Cards -->
   <div class="container d-flex justify-content-around mt-5">
-    <!-- Login como empresa -->
+    <!-- Cadastro como empresa -->
     <div class="card card-custom text-center">
       <img src="img/imageEmp.png" class="card-img-top img-custom mx-auto" alt="Empresa">
       <div class="card-body">
-        <p class="card-text">Acesse as queixas recentes e a avaliação de sua empresa</p>
-        <a href="#" class="btn btn-custom-card">Fazer login como empresa</a>
+        <p class="card-text">Cadastre sua empresa no QUEIXA.COM e destaque-se com as 
+            melhores avaliações para atrair mais clientes</p>
+        <a href="#" class="btn btn-custom-card">Fazer cadastro como empresa</a>
       </div>
     </div>
-    <!-- Login como consumidor -->
+    <!-- Cadastro como consumidor -->
     <div class="card card-custom text-center">
       <img src="img/imageCon.png" class="card-img-top img-custom mx-auto" alt="Consumidor">
       <div class="card-body">
-        <p class="card-text">Acompanhe suas queixas e as respostas das empresa</p>
-        <a href="#" class="btn btn-custom-card">Fazer login como consumidor</a>
+        <p class="card-text">Cadastre-se agora para avaliar empresas, registrar suas 
+            reclamações e ajudar outros consumidores com sua experiência </p>
+        <a href="#" class="btn btn-custom-card">Fazer cadastro como consumidor</a>
       </div>
     </div>
   </div>

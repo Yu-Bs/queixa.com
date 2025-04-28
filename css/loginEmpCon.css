@@ -24,12 +24,24 @@
 /* Cards */
 .card-custom {
     width: 21rem; 
+    background-color: #f2f2f2;
 }
 
 .img-custom {
     width: 100%;
-    height: 300px; /* Ajuste a altura conforme necessário */
+    height: 300px; 
     object-fit: cover; /* Faz com que a imagem cubra o espaço do card */
 }
+
+.btn-custom-card {
+    color: #ffffff;
+    background-color: #1EA2B6;
+}
+
+.btn-custom-card:hover {
+    background-color: #178C99; 
+    color: #ffffff;
+}
+
 
 
