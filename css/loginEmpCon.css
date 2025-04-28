@@ -1,0 +1,35 @@
+/* Botão da barra de pesquisa */
+.btn-outline-custom {
+    color: #1EA2B6;
+    border-color: #1EA2B6;
+}
+
+.btn-outline-custom:hover {
+    color: #ffffff;
+    background-color: #1EA2B6;
+}
+
+.btn-outline-custom:active {
+    background-color: #178C99; 
+    border-color: #178C99; 
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* Sombra da navbar*/
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards */
+.card-custom {
+    width: 21rem; 
+}
+
+.img-custom {
+    width: 100%;
+    height: 300px; /* Ajuste a altura conforme necessário */
+    object-fit: cover; /* Faz com que a imagem cubra o espaço do card */
+}
+
+
