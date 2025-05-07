@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,20 +28,45 @@
             <!-- Itens que irão para o botão acima -->
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <form class="d-flex mx-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-custom" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Buscar por empresa" aria-label="Search">
+                    <button class="btn btn-outline-custom" type="submit">Buscar</button>
                 </form>
                 <!-- Botões para redirecionar -->
-                <div class="d-flex">
-                    <a href="loginEmpCon.php" class="btn btn-outline-custom">Entrar</a>
-                    <a href="cadastroEmpCon.php" class="btn btn-outline-custom ms-2">Cadastrar</a>
+                <div class="d-flex me-4">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <!-- Dropdown do perfil (usuário logado) -->
+                        <div class="btn-group">
+                            <!-- Botão com imagem -->
+                            <button class="btn btn-secondary btn-lg d-flex align-items-center" type="button">
+                                <img src="img/perfilUsuario.png" alt="Botão" style="width: 30px; height: 30px;" class="me-2">
+                                Yuri
+                            </button>
+
+                            <!-- Ícone do dropdown -->
+                            <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+
+                            <!-- Menu dropdown -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="logout.php">Deslogar</a></li>
+                                <li><a class="dropdown-item" href="#">Minhas Reclamações</a></li>
+                            </ul>
+                        </div>
+                    <?php else: ?>
+                        <!-- Botões para redirecionar -->
+                        <div class="d-flex">
+                            <a href="loginEmpCon.php" class="btn btn-outline-custom">Entrar</a>
+                            <a href="cadastroEmpCon.php" class="btn btn-outline-custom ms-2">Cadastrar</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
     </nav>
     <div class="container position-relative mt-5" style="background-color: blue;">
 
-        <div class="box-custom-item1 position-absolute top-0 start-0 m-4 p-4 text-center" >
+        <div class="box-custom-item1 position-absolute top-0 start-0 m-4 p-4 text-center">
             <a href="#" class="btn btn-custom-item1  me-2">Faça uma queixa</a>
             <a href="#" class="btn btn-custom-item1 ">Minhas queixas</a>
         </div>
@@ -47,8 +75,8 @@
             Melhores empresas
         </div>
 
-        <div class="box-custom-item3 position-absolute bottom-0 start-0 m-4 p-4 text-center" >
-            <a href="#" class="btn btn-custom-item3  me-2 mb-2" > Cadastre aqui a sua empresa</a>
+        <div class="box-custom-item3 position-absolute bottom-0 start-0 m-4 p-4 text-center">
+            <a href="#" class="btn btn-custom-item3  me-2 mb-2"> Cadastre aqui a sua empresa</a>
             <p>Cadastre sua empresa no QUEIXA.COM e destaque-se com as melhores avaliações para atrair mais clientes!</p>
         </div>
 

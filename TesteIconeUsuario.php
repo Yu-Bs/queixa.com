@@ -1,3 +1,9 @@
+<?php
+include_once './usuario.php';
+?>
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,11 +36,14 @@
                 </form>
                 <!-- Botões para redirecionar -->
                 <div class="d-flex me-4">
+                <?php if (isset($_SESSION['user'])): ?>
+                <!-- Dropdown do perfil (usuário logado) -->
                     <div class="btn-group">
                         <!-- Botão com imagem -->
                         <button class="btn btn-secondary btn-lg d-flex align-items-center" type="button">
                             <img src="img/perfilUsuario.png" alt="Botão" style="width: 30px; height: 30px;" class="me-2">
-                            Yuri 
+                            <!-- Nome do usuário logado-->
+                            <?= htmlspecialchars($_SESSION['user']->nomeUsuario) ?>
                         </button>
 
                         <!-- Ícone do dropdown -->
@@ -48,6 +57,13 @@
                             <li><a class="dropdown-item" href="#">Minhas Reclamações</a></li>
                         </ul>
                     </div>
+                    <?php else: ?>
+                    <!-- Botões para redirecionar -->
+                        <div class="d-flex">
+                            <a href="loginEmpCon.php" class="btn btn-outline-custom">Entrar</a>
+                            <a href="cadastroEmpCon.php" class="btn btn-outline-custom ms-2">Cadastrar</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
