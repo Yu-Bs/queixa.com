@@ -13,11 +13,12 @@ if (isset($_POST['empresa'])){
     $dados= mysqli_fetch_assoc($consulta);
     $user= null;
     if($dados!= null){
-        $user= new Empresa($dados["idEmpresa"], $dados["nomeEmpresa"], $dados["cnpj"], $dados["senhaEmpresa"], $dados["endereco"], $dados["idSetor"]);
+        $user= new Empresa($dados["idEmpresa"], $dados["nomeEmpresa"], $dados["senhaEmpresa"],$dados["cnpj"], $dados["endereco"], $dados["idSetor"]);
     }
 
     if($user != null && $user-> validaEmpresaSenha($empresa, $senhaEmpresa)){
         $_SESSION['user']=$user;
+        header("Location: MenuPrincipal.php");
     }else{
         $_SESSION['msg']= "CNPJ ou senha incorretos!!";
         header("Location: loginEmpresa.php");

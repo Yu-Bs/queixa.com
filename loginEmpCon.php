@@ -43,7 +43,7 @@
       <img src="img/imageEmp.png" class="card-img-top img-custom mx-auto" alt="Empresa">
       <div class="card-body">
         <p class="card-text">Acesse as queixas recentes e a avaliação de sua empresa</p>
-        <a href="#" class="btn btn-custom-card">Fazer login como empresa</a>
+        <a href="loginEmpresa.php" class="btn btn-custom-card">Fazer login como empresa</a>
       </div>
     </div>
     <!-- Login como consumidor -->

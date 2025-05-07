@@ -28,7 +28,7 @@ session_start();
     <!--Barra navegação-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Queixa.com</a>
+        <a class="navbar-brand" href="MenuPrincipal.php">Queixa.com</a>
 
         <!-- Botão que aparece em telas pequenas para abrir/fechar o menu -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,7 @@ session_start();
         } ?>
 
         <!--email, senha e botão-->
-        <form action="TesteValidacao.php" method="POST">
+        <form action="ValidacaoUsu.php" method="POST">
           <div class="mb-3 text-start">
             <label for="staticEmail" class="form-label">E-mail</label>
             <input type="email" name="usuario" class="form-control" id="staticEmail" placeholder="Digite seu Email">

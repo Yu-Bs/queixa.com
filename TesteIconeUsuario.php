@@ -1,8 +1,9 @@
 <?php
 include_once './usuario.php';
+include_once './empresa.php';
 ?>
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,29 +37,37 @@ include_once './usuario.php';
                 </form>
                 <!-- Botões para redirecionar -->
                 <div class="d-flex me-4">
-                <?php if (isset($_SESSION['user'])): ?>
-                <!-- Dropdown do perfil (usuário logado) -->
-                    <div class="btn-group">
-                        <!-- Botão com imagem -->
-                        <button class="btn btn-secondary btn-lg d-flex align-items-center" type="button">
-                            <img src="img/perfilUsuario.png" alt="Botão" style="width: 30px; height: 30px;" class="me-2">
-                            <!-- Nome do usuário logado-->
-                            <?= htmlspecialchars($_SESSION['user']->nomeUsuario) ?>
-                        </button>
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <!-- Dropdown do perfil (usuário logado) -->
+                        <div class="btn-group">
+                            <!-- Botão com imagem -->
+                            <button class="btn btn-secondary btn-lg d-flex align-items-center" type="button">
+                                <img src="img/perfilUsuario.png" alt="Botão" style="width: 30px; height: 30px;" class="me-2">
+                                <!-- Nome do usuário logado-->
+                                <?php
+                                if (isset($_SESSION['user'])) {
+                                    if (property_exists($_SESSION['user'], 'nomeUsuario')) {
+                                        echo htmlspecialchars($_SESSION['user']->nomeUsuario);
+                                    } elseif (property_exists($_SESSION['user'], 'nomeEmpresa')) {
+                                        echo htmlspecialchars($_SESSION['user']->nomeEmpresa);
+                                    }
+                                }
+                                ?>
+                            </button>
 
-                        <!-- Ícone do dropdown -->
-                        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
+                            <!-- Ícone do dropdown -->
+                            <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
 
-                        <!-- Menu dropdown -->
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="logout.php">Deslogar</a></li>
-                            <li><a class="dropdown-item" href="#">Minhas Reclamações</a></li>
-                        </ul>
-                    </div>
+                            <!-- Menu dropdown -->
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="logout.php">Deslogar</a></li>
+                                <li><a class="dropdown-item" href="#">Minhas Reclamações</a></li>
+                            </ul>
+                        </div>
                     <?php else: ?>
-                    <!-- Botões para redirecionar -->
+                        <!-- Botões para redirecionar -->
                         <div class="d-flex">
                             <a href="loginEmpCon.php" class="btn btn-outline-custom">Entrar</a>
                             <a href="cadastroEmpCon.php" class="btn btn-outline-custom ms-2">Cadastrar</a>

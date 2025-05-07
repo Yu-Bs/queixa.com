@@ -1,4 +1,8 @@
 <?php
+include_once './usuario.php';
+include_once './empresa.php';
+?>
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -39,7 +43,16 @@ session_start();
                             <!-- Botão com imagem -->
                             <button class="btn btn-secondary btn-lg d-flex align-items-center" type="button">
                                 <img src="img/perfilUsuario.png" alt="Botão" style="width: 30px; height: 30px;" class="me-2">
-                                Yuri
+                                <!-- Nome do usuário logado-->
+                                <?php
+                                if (isset($_SESSION['user'])) {
+                                    if (property_exists($_SESSION['user'], 'nomeUsuario')) {
+                                        echo htmlspecialchars($_SESSION['user']->nomeUsuario);
+                                    } elseif (property_exists($_SESSION['user'], 'nomeEmpresa')) {
+                                        echo htmlspecialchars($_SESSION['user']->nomeEmpresa);
+                                    }
+                                }
+                                ?>
                             </button>
 
                             <!-- Ícone do dropdown -->

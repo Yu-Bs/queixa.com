@@ -28,7 +28,7 @@ session_start();
     <!--Barra navegação-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Queixa.com</a>
+        <a class="navbar-brand" href="MenuPrincipal.php">Queixa.com</a>
 
         <!-- Botão que aparece em telas pequenas para abrir/fechar o menu -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,10 +75,10 @@ session_start();
         } ?>
 
         <!--email, senha e botão-->
-        <form action="TesteValidacaoEmp.php" method="POST">
+        <form action="ValidacaoEmp.php" method="POST">
           <div class="mb-3 text-start">
             <label for="cnpj" class="form-label">CNPJ</label>
-            <input type="text" name="cnpj" class="form-control" id="cnpj" placeholder="Digite o CNPJ">
+            <input type="text" name="empresa" class="form-control" id="cnpj" placeholder="Digite o CNPJ">
           </div>
           <div class="mb-3 text-start">
             <label for="inputPassword" class="form-label">Senha</label>
