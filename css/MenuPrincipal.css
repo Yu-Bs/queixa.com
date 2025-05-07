@@ -1,0 +1,91 @@
+/* Botão da barra de pesquisa */
+.btn-outline-custom {
+    color: #1EA2B6;
+    border-color: #1EA2B6;
+}
+
+.btn-outline-custom:hover {
+    color: #ffffff;
+    background-color: #1EA2B6;
+}
+
+.btn-outline-custom:active {
+    background-color: #178C99; 
+    border-color: #178C99; 
+    color: #ffffff;
+    box-shadow: none;
+}
+
+/* Sombra da navbar*/
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container dos itens */
+.container {
+    min-height: 70vh;
+}
+/* Css do item1 (dois botões)*/
+.box-custom-item1 {
+    width: 450px;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #d9d9d9;
+}
+.btn-custom-item1 {
+    background-color: #1EA2B6;
+    color: #ffffff;
+    height: 80px;
+    width: 200px;
+    display: inline-flex;
+    text-align: center;  
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.btn-custom-item1:hover {
+    background-color: #178C99;
+    color:#f9f9f9;
+}
+
+/* estilo para os outros item ainda sem conteúdo*/
+.box-custom {
+    width: 450px;
+    height: 180px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #ffffff;
+}
+
+/* Css do item 3 (botão e texto)*/
+.box-custom-item3 {
+    width: 450px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    background-color: #ffffff;
+}
+
+.btn-custom-item3{
+    background-color: #1EA2B6;
+    color: #ffffff;
+    height: 80px;
+    width: 400px;
+    display: inline-flex;
+    text-align: center;  
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.btn-custom-item3:hover {
+    background-color: #178C99;
+    color:#f9f9f9;
+}

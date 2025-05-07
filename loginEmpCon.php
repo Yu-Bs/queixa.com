@@ -17,7 +17,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Queixa.com</a>
+      <a class="navbar-brand" href="MenuPrincipal.php">Queixa.com</a>
       <!-- Botão que aparece em telas pequenas para abrir/fechar o menu -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@
       <img src="img/imageCon.png" class="card-img-top img-custom mx-auto" alt="Consumidor">
       <div class="card-body">
         <p class="card-text">Acompanhe suas queixas e as respostas das empresa</p>
-        <a href="#" class="btn btn-custom-card">Fazer login como consumidor</a>
+        <a href="loginUsuario.php" class="btn btn-custom-card">Fazer login como consumidor</a>
       </div>
     </div>
   </div>
