@@ -1,6 +1,6 @@
 <?php
 include_once './conexaoDatabase.php';
-include_once './usuario.php';
+include_once './empresa.php';
 
 session_start();
 
@@ -38,7 +38,7 @@ session_start();
         <!-- Itens que irão para o botão acima -->
         <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
           <form class="d-flex mx-auto" role="search">
-            <input class="form-control me-2" type="search" placeholder="Busque por empresas" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Busque por..." aria-label="Search">
             <button class="btn btn-outline-custom" type="submit">Buscar</button>
           </form>
 
@@ -55,7 +55,7 @@ session_start();
     <div style="position: absolute; right: 50px; top: 50%; transform: translateY(-50%); color:black">
       <p class="fs-1 text-center">Ainda não possui cadastro?</p>
       <div class="text-center">
-            <button type="submit" class="btn btn-primary w-100">Cadastrar-se</button>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar minha empresa</button>
       </div>
     </div>
 
@@ -75,14 +75,14 @@ session_start();
         } ?>
 
         <!--email, senha e botão-->
-        <form action="TesteValidacao.php" method="POST">
+        <form action="TesteValidacaoEmp.php" method="POST">
           <div class="mb-3 text-start">
-            <label for="staticEmail" class="form-label">E-mail</label>
-            <input type="email" name="usuario" class="form-control" id="staticEmail" placeholder="Digite seu Email">
+            <label for="cnpj" class="form-label">CNPJ</label>
+            <input type="text" name="cnpj" class="form-control" id="cnpj" placeholder="Digite o CNPJ">
           </div>
           <div class="mb-3 text-start">
             <label for="inputPassword" class="form-label">Senha</label>
-            <input type="password" name="senhaUsuario" class="form-control" id="inputPassword" placeholder="Digite sua senha">
+            <input type="password" name="senhaEmpresa" class="form-control" id="inputPassword" placeholder="Digite sua senha">
           </div>
           <div class="text-center">
             <button type="submit" class="btn btn-primary w-100">Entrar</button>
