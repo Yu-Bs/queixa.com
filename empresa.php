@@ -7,6 +7,7 @@ class empresa{
         $this-> nomeEmpresa= $nomeEmpresa;
         $this-> cnpj= $cnpj;
         $this-> senhaEmpresa= $senhaEmpresa;
+        $this-> endereco=$endereco;
         $this-> idSetor= $idSetor;
     }
 
