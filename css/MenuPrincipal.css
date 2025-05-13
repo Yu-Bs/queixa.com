@@ -89,3 +89,9 @@
     background-color: #178C99;
     color:#f9f9f9;
 }
+
+/* Css do item 4 (Gráfico)*/
+#grafico {
+    width: 100%;
+    height: 160px;
+}

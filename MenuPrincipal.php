@@ -16,10 +16,16 @@ session_start();
         crossorigin="anonymous">
     <link rel="stylesheet" href="css/MenuPrincipal.css">
     <link rel="stylesheet" href="css/ListaMelhoresEmp.css">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
+
+    <!-- Google Charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- JS externo -->
+    <script src="js/graficoMenu.js"></script>
+
     <title>Queixa.com</title>
 </head>
 
@@ -99,7 +105,7 @@ session_start();
         </div>
 
         <div class="box-custom position-absolute bottom-0 end-0 m-4 p-4 text-center">
-            Gráficos
+            <div id="grafico"></div>
         </div>
     </div>
 </body>
