@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once 'conexaoDatabase.php';
-include_once 'buscaEmpresas.php';
 include_once 'empresa.php';
 ?>
 
@@ -60,7 +59,7 @@ include_once 'empresa.php';
   <p class="text-center fs-4">Vamos nos Queixar!</p>
   <!--card fundo-->
   <div class="container mt-5">
-    <div class="card shadow p-4 w-100 h-100">
+    <div class="card shadow p-4 w-100 h-90">
     <div class="container mt-4">
       <div class="row">
         <!-- Coluna da esquerda -->
