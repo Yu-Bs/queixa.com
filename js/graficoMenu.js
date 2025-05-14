@@ -1,3 +1,4 @@
+console.log('Carregando o gráfico do menu...');
 
 // Carrega a lib do Google Charts
 google.charts.load('current', { packages: ['corechart'] });
@@ -11,8 +12,9 @@ function drawChart() {
             const chartData = google.visualization.arrayToDataTable(data);
 
             const options = {
-                title: 'Queixas por Categoria de avaliação',
-                legend: { position: 'labeled' },
+                title: 'Quantidade de empresas cadastradas por setor',
+                legend: { position: 'right' },
+                pieSliceText: 'label',
                 width: 400,
                 height: 170
             };

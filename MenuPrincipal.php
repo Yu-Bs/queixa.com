@@ -85,7 +85,7 @@ session_start();
             </div>
         </div>
     </nav>
-    <div class="container position-relative mt-5" style="background-color: blue;">
+    <div class="container position-relative mt-5" >
 
         <div class="box-custom-item1 position-absolute top-0 start-0 m-4 p-4 text-center">
             <a href="#" class="btn btn-custom-item1  me-2">Faça uma queixa</a>
