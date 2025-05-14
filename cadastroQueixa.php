@@ -13,6 +13,7 @@ include_once 'empresa.php';
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
     crossorigin="anonymous">
+  <link rel="stylesheet" href="css/cadastroQueixa.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
@@ -110,8 +111,9 @@ include_once 'empresa.php';
           </div>
           <!--caixa de texto "escondida"-->
           <div class="mb-3" id="campoProduto" style="display: none;">
-            <label for="nomeProduto" class="form-label">Digite qual produto é referente a queixa: </label>
-            <input type="text" class="form-control" id="nomeProduto" placeholder="Digite o nome do produto">
+            <label for="nomeProduto" class="form-label">Digite qual produto é referente à queixa: </label>
+            <input type="text" class="form-control" id="nomeProduto" placeholder="Digite o nome do produto" autocomplete="off">
+            <ul id="sugestoes" class="list-group" style="position: absolute; z-index: 1000;"></ul>
           </div>
 
           <!-- Descrição da queixa -->
@@ -159,6 +161,7 @@ include_once 'empresa.php';
 </script>
 
 <script>
+  //script funcionamento autocomplete empresa
 document.addEventListener('DOMContentLoaded', function () {
   const input = document.getElementById('empresaInput');
   const sugestoes = document.getElementById('buscaEmpresa');
@@ -207,6 +210,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+</script>
+
+<script>
+  //script autocomplete produtos queixa
+  const input = document.getElementById("nomeProduto");
+  const sugestoes = document.getElementById("sugestoes");
+
+  input.addEventListener("input", async () => {
+    const termo = input.value;
+    sugestoes.innerHTML = "";
+
+    if (termo.length < 2) return;
+
+    const resposta = await fetch(`/buscaProdutos?termo=${encodeURIComponent(termo)}`);
+    const produtos = await resposta.json();
+
+    produtos.forEach(produto => {
+      const item = document.createElement("li");
+      item.className = "list-group-item list-group-item-action";
+      item.textContent = produto.nome;
+      item.onclick = () => {
+        input.value = produto.nome;
+        sugestoes.innerHTML = "";
+      };
+      sugestoes.appendChild(item);
+    });
+  });
 </script>
 
 </html>
