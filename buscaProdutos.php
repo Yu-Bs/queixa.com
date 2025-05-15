@@ -15,7 +15,7 @@ $result = mysqli_query($conexao, $sql);
 
 $produtos = [];
 while ($row = mysqli_fetch_assoc($result)) {
-  $empresas[] = $row['nomeProduto'];
+  $produtos[] = $row['nomeProduto'];
 }
 
 echo json_encode($produtos);
