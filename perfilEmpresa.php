@@ -1,6 +1,5 @@
 <?php
 include_once './empresa.php';
-include_once './consultaDadosEmpresa.php';
 ?>
 <?php
 session_start();
@@ -86,13 +85,7 @@ session_start();
 
     <div class="container-fluid bg-light py-3 shadow">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-0">
-                <?php if ($isEmpresaPesquisada): ?>
-                    <?php echo $empresa['nomeEmpresa']; ?> <!-- Nome da empresa pesquisada -->
-                <?php else: ?>
-                    <?php echo $_SESSION['user']->nomeEmpresa; ?> <!-- Nome da empresa logada -->
-                <?php endif; ?>
-            </h2>
+            <h2 class="mb-0">Nome da Empresa</h2>
             <span class="badge bg-success fs-5">Nota: 4.5</span>
             <a href="#" class="btn btn-primary">Fazer Avaliação</a>
         </div>
