@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
@@ -7,11 +7,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
     rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="css/loginEmpCon.css">
+  <link rel="stylesheet" href="css/cadastro.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
   <title>Queixa.com</title>
+  <!-- No <head> ou antes do </body> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/cadastro.js"></script> <!-- Arquivo externo -->
   <link rel="stylesheet" href="css/navBar.css">
 </head>
 
@@ -30,30 +33,31 @@
           <button class="btn btn-outline-custom" type="submit">Search</button>
         </form>
         <!-- Botões para redirecionar -->
-        <div class="d-flex">
+        <div class="d-flex align-items-center gap-2">
+          <span class="text-muted">Já tem cadastro?</span>
           <a href="loginEmpCon.php" class="btn btn-outline-custom">Entrar</a>
-          <a href="cadastroEmpCon.php" class="btn btn-outline-custom ms-2">Cadastrar</a>
         </div>
       </div>
     </div>
   </nav>
-  <!-- Cards -->
-  <div class="container d-flex justify-content-around mt-5">
-    <!-- Login como empresa -->
-    <div class="card card-custom text-center">
-      <img src="img/imageEmp.png" class="card-img-top img-custom mx-auto" alt="Empresa">
-      <div class="card-body">
-        <p class="card-text">Acesse as queixas recentes e a avaliação de sua empresa</p>
-        <a href="loginEmpresa.php" class="btn btn-custom-card">Fazer login como empresa</a>
-      </div>
-    </div>
-    <!-- Login como consumidor -->
-    <div class="card card-custom text-center">
-      <img src="img/imageCon.png" class="card-img-top img-custom mx-auto" alt="Consumidor">
-      <div class="card-body">
-        <p class="card-text">Acompanhe suas queixas e as respostas das empresa</p>
-        <a href="loginUsuario.php" class="btn btn-custom-card">Fazer login como consumidor</a>
-      </div>
+
+  <div class="container">
+    <div class="card">
+      <h1>LET'S CADASTRO</h1>
+
+      <form action="insertLoginUsuario.php" method="post">
+        <h2>Digite seu nome</h2>
+        <input type="text" name="nomeUsuario" placeholder="Primeiro nome" required>
+
+        <h2>Digite seu e-mail</h2>
+        <input type="email" name="email" placeholder="exemplo@email.com" required>
+
+        <h2>Digite sua senha</h2>
+        <input type="password" name="senhaUsuario" placeholder="Crie uma senha" required>
+
+        <button type="submit">CADASTRAR</button>
+      </form>
+      <div id="feedback" class="mt-3"></div>
     </div>
   </div>
 </body>
