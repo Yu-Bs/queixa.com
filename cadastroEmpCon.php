@@ -12,6 +12,7 @@
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
   <title>Queixa.com</title>
+  <link rel="stylesheet" href="css/navBar.css">
 </head>
 
 <body>
