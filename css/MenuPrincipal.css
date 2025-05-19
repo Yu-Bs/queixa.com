@@ -38,6 +38,7 @@ body {
     justify-content: center; 
     background-color: #d9d9d9;
 }
+/* Botão para o consumidor*/
 .btn-custom-item1 {
     background-color: #1EA2B6;
     color: #ffffff;
@@ -49,13 +50,31 @@ body {
     justify-content: center;
     font-weight: bold;
 }
-
 .btn-custom-item1:hover {
     background-color: #178C99;
     color:#f9f9f9;
 }
 
-/* estilo para os outros item ainda sem conteúdo*/
+/* Botão para a empresa*/
+.btn-custom-item1-empresa {
+    background-color: #1EA2B6;
+    color: #ffffff;
+    height: 80px;
+    width: 270px;
+    display: inline-flex;
+    text-align: center;  
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.btn-custom-item1-empresa:hover {
+    background-color: #178C99;
+    color:#f9f9f9;
+}
+
+
+/* Estilo usado pelo gráfico e para o item de melhores empresas*/
 .box-custom {
     width: 450px;
     height: 180px;
@@ -97,4 +116,9 @@ body {
 #grafico {
     width: 100%;
     height: 160px;
+}
+
+.titulo-grafico {
+    font-size: 20px;
+    font-weight: bold;
 }

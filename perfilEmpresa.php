@@ -1,5 +1,4 @@
 <?php
-include_once './usuario.php';
 include_once './empresa.php';
 ?>
 <?php
@@ -12,27 +11,19 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
-        rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
-        crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
         crossorigin="anonymous"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+        crossorigin="anonymous">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/MenuPrincipal.css">
-    <link rel="stylesheet" href="css/ListaMelhoresEmp.css">
-
-    <!-- Google Charts -->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- JS externo -->
-    <script src="js/graficoMenu.js"></script>
-
+    <link rel="stylesheet" href="css/perfilEmpresa.css">
     <title>Queixa.com</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="MenuPrincipal.php">Queixa.com</a>
             <!-- Botão que aparece em telas pequenas para abrir/fechar o menu -->
@@ -91,36 +82,44 @@ session_start();
             </div>
         </div>
     </nav>
-    <div class="container position-relative mt-5" >
-        <div class="box-custom-item1 position-absolute top-0 start-0 m-4 p-4 text-center">
-            <?php if (isset($_SESSION['user']->nomeEmpresa)): ?>
-                <a href="perfilEmpresa.php" class="btn btn-custom-item1-empresa ">Veja as queixas da sua empresa</a>
-            <?php else: ?>
-                <a href="cadastroQueixa.php" class="btn btn-custom-item1  me-2">Faça uma queixa</a>
-                <a href="#" class="btn btn-custom-item1 ">Minhas queixas</a>
-            <?php endif; ?>
-        </div>
 
-        <div class="box-custom position-absolute top-0 end-0 m-4 p-4 text-center">
-            <div class="dados" style="max-height: 170px; overflow-y: auto;">
-                <h2 class="titulo-grafico">Empresas melhor avaliadas</h2>
-                <?php include 'listarMelhoresEmpresas.php'; ?>
+    <div class="container-fluid bg-light py-3 shadow">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">Nome da Empresa</h2>
+            <span class="badge bg-success fs-5">Nota: 4.5</span>
+            <a href="#" class="btn btn-primary">Fazer Avaliação</a>
+        </div>
+    </div>
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Coluna esquerda: gráficos -->
+            <div class="col-lg-4 mb-4">
+                <div class="mb-3 p-3 border rounded shadow-sm">
+                    <!-- Gráfico 1 -->
+                    <h5>Gráfico 1</h5>
+                    <canvas id="grafico1"></canvas>
+                </div>
+                <div class="p-3 border rounded shadow-sm">
+                    <!-- Gráfico 2 -->
+                    <h5>Gráfico 2</h5>
+                    <canvas id="grafico2"></canvas>
+                </div>
             </div>
 
-        </div>
-
-        <div class="box-custom-item3 position-absolute bottom-0 start-0 m-4 p-4 text-center">
-            <?php if (isset($_SESSION['user']->nomeEmpresa)): ?>
-                <a href="#" class="btn btn-custom-item3  me-2 mb-2"> Cadastre-se como consumidor</a>
-                <p>Registre-se como consumidor e ajude empresas a evoluírem com suas queixas!</p>
-            <?php else: ?>
-                <a href="#" class="btn btn-custom-item3  me-2 mb-2"> Cadastre aqui a sua empresa</a>
-                <p>Cadastre sua empresa no QUEIXA.COM e destaque-se com as melhores avaliações para atrair mais clientes!</p>
-            <?php endif; ?>
-        </div>
-
-        <div class="box-custom position-absolute bottom-0 end-0 m-4 p-4 text-center">
-            <div id="grafico"></div>
+            <!-- Coluna direita: queixas -->
+            <div class="col-lg-8">
+                <div class="p-3 border rounded shadow-sm">
+                    <h4>Queixas dos Consumidores</h4>
+                    <div class="queixa mb-3">
+                        <strong>João:</strong> Produto com defeito...
+                    </div>
+                    <div class="queixa mb-3">
+                        <strong>Maria:</strong> Atendimento demorado...
+                    </div>
+                    <!-- Adicione mais queixas dinamicamente aqui -->
+                </div>
+            </div>
         </div>
     </div>
 </body>
