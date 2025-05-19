@@ -18,7 +18,6 @@ session_start();
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
     crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/navBar.css">
   <title>Queixa.com</title>
 </head>
 
@@ -56,7 +55,7 @@ session_start();
     <div style="position: absolute; right: 50px; top: 50%; transform: translateY(-50%); color:black">
       <p class="fs-1 text-center">Ainda não possui cadastro?</p>
       <div class="text-center">
-        <button type="submit" class="btn btn-primary w-100">Cadastrar-se</button>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar-se</button>
       </div>
     </div>
 
