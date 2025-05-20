@@ -33,7 +33,7 @@ session_start();
             <!-- Itens que irão para o botão acima -->
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
                 <form class="d-flex mx-auto" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar por empresa" aria-label="Search">
+                    <input class="form-control me-2" name="nomeEmpresa" type="search" placeholder="Buscar por empresa" aria-label="Search">
                     <button class="btn btn-outline-custom" type="submit">Buscar</button>
                 </form>
                 <!-- Botões para redirecionar -->
