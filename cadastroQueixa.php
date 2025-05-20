@@ -3,6 +3,7 @@ session_start();
 include_once 'conexaoDatabase.php';
 include_once 'empresa.php';
 include_once 'produto.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -133,10 +134,7 @@ include_once 'produto.php';
     </div>
   </div>
 
-</body>
-
-
-<script>
+  <script>
   //script funcionamento checkbox
   //Quando a página carrega
   document.addEventListener("DOMContentLoaded", function () {
@@ -161,119 +159,100 @@ include_once 'produto.php';
   });
 </script>
 
+
 <script>
+let empresaSelecionada = ''; // empresa clicada
 
-  /*<div style="position: relative;">
-          <label for="empresaInput" class="form-label">Qual a empresa referente?</label>
-          <input type="text" class="form-control" id="empresaInput" autocomplete="off" placeholder="Digite o nome da empresa">
-          <div id="buscaEmpresa" class="list-group position-absolute z-3 w-50" 
-              style="max-height: 200px; overflow-y: auto;"></div>
-        </div>*/
-  //script funcionamento autocomplete empresa
-document.addEventListener('DOMContentLoaded', function () {
-  const input = document.getElementById('empresaInput');
-  const sugestoes = document.getElementById('buscaEmpresa');
+document.addEventListener('DOMContentLoaded', () => {
+  const empresaInput  = document.getElementById('empresaInput');
+  const listaEmpresas = document.getElementById('buscaEmpresa');
+  const prodInput     = document.getElementById('nomeProduto');
+  const listaProd     = document.getElementById('sugestoes');
 
-  input.addEventListener('input', function () {
-    const termo = this.value.trim();
+  // Autocomplete de empresas
+  empresaInput.addEventListener('input', () => {
+    const termo = empresaInput.value.trim();
+    if (termo.length < 2) { listaEmpresas.innerHTML = ''; return; }
 
-    if (termo.length < 2) {
-      sugestoes.innerHTML = '';
-      return;
-    }
-
-    fetch('buscaEmpresas.php?termo=' + encodeURIComponent(termo))
-      .then(response => response.json())
+    fetch(`buscaEmpresas.php?termo=${encodeURIComponent(termo)}`)
+      .then(r => r.json())
       .then(empresas => {
-        sugestoes.innerHTML = '';
-
-        if (empresas.length === 0) {
-          sugestoes.innerHTML = '<div class="list-group-item">Nenhuma empresa encontrada</div>';
+        listaEmpresas.innerHTML = '';
+        if (!empresas.length) {
+          listaEmpresas.innerHTML = '<div class="list-group-item">Nenhuma empresa encontrada</div>';
           return;
         }
 
         empresas.forEach(nome => {
           const item = document.createElement('div');
-          item.classList.add('list-group-item', 'list-group-item-action');
+          item.className = 'list-group-item list-group-item-action';
           item.textContent = nome;
 
-          item.addEventListener('click', function () {
-            input.value = nome;
-            sugestoes.innerHTML = '';
+          item.addEventListener('click', () => {
+            empresaInput.value = nome;
+            empresaSelecionada = nome;
+            listaEmpresas.innerHTML = '';
           });
 
-          sugestoes.appendChild(item);
+          listaEmpresas.appendChild(item);
         });
       })
-      .catch(error => {
-        console.error('Erro ao buscar empresas:', error);
-        sugestoes.innerHTML = '<div class="list-group-item text-danger">Erro ao buscar empresas</div>';
+      .catch(() => {
+        listaEmpresas.innerHTML = '<div class="list-group-item text-danger">Erro ao buscar empresas</div>';
       });
   });
 
-  // Fecha sugestões se clicar fora
-  document.addEventListener('click', function (event) {
-    if (!event.target.closest('#empresaInput') && !event.target.closest('#buscaEmpresa')) {
-      sugestoes.innerHTML = '';
+  // Fecha sugestões de empresa se clicar fora
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#empresaInput') && !e.target.closest('#buscaEmpresa'))
+      listaEmpresas.innerHTML = '';
+  });
+
+  // Autocomplete de produtos
+  prodInput.addEventListener('input', () => {
+    const termo = prodInput.value.trim();
+    if (termo.length < 2 || !empresaSelecionada) {
+      listaProd.innerHTML = '';
+      return;
     }
+
+    fetch(`buscaProdutos.php?termo=${encodeURIComponent(termo)}&empresa=${encodeURIComponent(empresaSelecionada)}`)
+      .then(r => r.json())
+      .then(produtos => {
+        listaProd.innerHTML = '';
+        if (!produtos.length) {
+          listaProd.innerHTML = '<li class="list-group-item">Nenhum produto encontrado</li>';
+          return;
+        }
+
+        produtos.forEach(nome => {
+          const item = document.createElement('li'); // <li> porque #sugestoes é <ul>
+          item.className = 'list-group-item list-group-item-action';
+          item.textContent = nome;
+
+          item.addEventListener('click', () => {
+            prodInput.value = nome;
+            listaProd.innerHTML = '';
+          });
+
+          listaProd.appendChild(item);
+        });
+      })
+      .catch(() => {
+        listaProd.innerHTML = '<li class="list-group-item text-danger">Erro ao buscar produtos</li>';
+      });
+  });
+
+  // Fecha sugestões de produto se clicar fora
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#nomeProduto') && !e.target.closest('#sugestoes'))
+      listaProd.innerHTML = '';
   });
 });
 </script>
 
-<script>
-  //script autocomplete produtos queixa
-  /*<div class="mb-3" id="campoProduto" style="display: none;">
-            <label for="nomeProduto" class="form-label">Digite qual produto é referente à queixa: </label>
-            <input type="text" class="form-control" id="nomeProduto" placeholder="Digite o nome do produto" autocomplete="off">
-            <ul id="sugestoes" class="list-group" style="position: absolute; z-index: 1000;"></ul>
-          </div>*/
-document.addEventListener('DOMContentLoaded', function () {
-  const input = document.getElementById('nomeProduto');
-  const sugestoes = document.getElementById('sugestoes');
 
-  input.addEventListener('input', function () {
-    const termo = this.value.trim();
+</body>
 
-    if (termo.length < 2) {
-      sugestoes.innerHTML = '';
-      return;
-    }
-
-    fetch('buscaProdutos.php?termo=' + encodeURIComponent(termo))
-      .then(response => response.json())
-      .then(empresas => {
-        sugestoes.innerHTML = '';
-
-        if (empresas.length === 0) {
-          sugestoes.innerHTML = '<div class="list-group-item">Nenhum produto encontrado</div>';
-          return;
-        }
-
-        empresas.forEach(nome => {
-          const item = document.createElement('div');
-          item.classList.add('list-group-item', 'list-group-item-action');
-          item.textContent = nome;
-
-          item.addEventListener('click', function () {
-            input.value = nome;
-            sugestoes.innerHTML = '';
-          });
-
-          sugestoes.appendChild(item);
-        });
-      })
-      .catch(error => {
-        console.error('Erro ao buscar produtos:', error);
-        sugestoes.innerHTML = '<div class="list-group-item text-danger">Erro ao buscar produtos</div>';
-      });
-  });
-  // Fecha sugestões se clicar fora
-    document.addEventListener('click', function (event) {
-      if (!event.target.closest('#nomeProduto') && !event.target.closest('#sugestoes')) {
-        sugestoes.innerHTML = '';
-      }
-    });
-  });
-</script>
 
 </html>
