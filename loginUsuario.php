@@ -56,7 +56,7 @@ session_start();
     <!--texto a direita na tela-->
     <div class="right-area">
       <p class="fs-1 text-center">Ainda não possui cadastro?</p>
-      <button type="submit" class="btn btn-primary w-100">Cadastrar-se</button>
+      <button type="submit" class="btn btn-custom w-100">Cadastrar-se</button>
     </div>
 
     <!--cor de fundo azul (lado esquerdo)-->
@@ -87,7 +87,7 @@ session_start();
               <input type="password" name="senhaUsuario" class="form-control" id="inputPassword" placeholder="Digite sua senha" />
             </div>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary w-100">Entrar</button>
+              <button type="submit" class="btn btn-custom w-100">Entrar</button>
             </div>
           </form>
         </div>

@@ -94,3 +94,15 @@ nav.navbar {
   align-items: center;
   padding: 0 50px;
 }
+
+/* Botões de envio*/
+.btn-custom {
+  background-color: #1EA2B6; 
+  color: white;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #178C99; 
+  color: white;
+}

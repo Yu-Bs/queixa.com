@@ -1,9 +1,9 @@
 <?php
+include_once 'usuario.php';
 session_start();
 include_once 'conexaoDatabase.php';
 include_once 'empresa.php';
 include_once 'produto.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +36,7 @@ include_once 'produto.php';
                                   if (isset($_SESSION['user'])) {
                                       if (property_exists($_SESSION['user'], 'nomeUsuario')) {
                                           echo htmlspecialchars($_SESSION['user']->nomeUsuario);
-                                      } elseif (property_exists($_SESSION['user'], 'nomeEmpresa')) {
-                                          echo htmlspecialchars($_SESSION['user']->nomeEmpresa);
-                                      }
+                                      } 
                                   }
                                   ?>
                               </button>
