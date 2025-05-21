@@ -48,3 +48,8 @@ body {
   background-color: #178C99; 
   color: white;
 }
+
+/* Css do gráfico superior */
+#graficoSup {
+  height: 200px; /* ou o valor que desejar */
+}

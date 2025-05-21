@@ -24,6 +24,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- CSS -->
     <link rel="stylesheet" href="css/perfilEmpresa.css">
     <link rel="stylesheet" href="css/navbar.css">
+    <!-- Google Charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- JS externo -->
+    <script src="js/graficoSuperiorPerfilEmpresa.js"></script>
     <title>Queixa.com</title>
 </head>
 
@@ -101,9 +105,11 @@ if (session_status() === PHP_SESSION_NONE) {
         ?>
         <div class="d-flex justify-content-between align-items-center">
             <h2 class="mb-0"><?php echo $dadosEmpresa['nomeEmpresa']; ?></h2>
+
             <span class="<?php echo $classeBadge; ?>">Nota: <?php echo $media !== null ?
                 number_format($media, 1, ',', '.') : 'Sem avaliação'; ?>
             </span>
+
             <?php
             // Exibir botão se não estiver logado OU se for usuário comum (idUsuario)
             if (!isset($_SESSION['user']) || isset($_SESSION['user']->idUsuario)) :
@@ -119,8 +125,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="col-lg-4 mb-4">
                 <div class="mb-3 p-3 border rounded shadow-sm">
                     <!-- Gráfico 1 -->
-                    <h5>Gráfico 1</h5>
-                    <canvas id="grafico1"></canvas>
+
+                    <div id="graficoSup"></div>
                 </div>
                 <div class="p-3 border rounded shadow-sm">
                     <!-- Gráfico 2 -->
