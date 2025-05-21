@@ -36,3 +36,16 @@ if (isset($_GET['nomeEmpresa'])) {
     echo "Nenhuma empresa especificada.";
     exit;
 }
+
+// Consulta da nota média usando a função medEmpresa
+$idEmpresaConsulta = $dadosEmpresa['idEmpresa'];
+$sqlMedia = "SELECT medEmpresa($idEmpresaConsulta) AS notaMedia";
+$resultMedia = mysqli_query($conexao, $sqlMedia);
+
+if ($resultMedia && mysqli_num_rows($resultMedia) > 0) {
+    $media = mysqli_fetch_assoc($resultMedia)['notaMedia'];
+} else {
+    $media = 0; // ou 0, se quiser tratar como sem avaliações
+}
+
+?>

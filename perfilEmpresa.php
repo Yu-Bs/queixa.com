@@ -87,9 +87,20 @@ if (session_status() === PHP_SESSION_NONE) {
     </nav>
 
     <div class="container-fluid bg-light py-3 shadow">
+        <?php
+        // Define a classe do botão conforme a nota
+        if ($media !== null && $media < 6) {
+            $classeBadge = "badge bg-danger fs-5"; // vermelho
+        } else if ($media !== null && $media >= 6) {
+            $classeBadge = "badge bg-success fs-5"; // verde
+        } else {
+            $classeBadge = "badge bg-secondary fs-5"; // cor padrão caso não tenha avaliação
+        }
+        ?>
         <div class="d-flex justify-content-between align-items-center">
             <h2 class="mb-0"><?php echo $dadosEmpresa['nomeEmpresa']; ?></h2>
-            <span class="badge bg-success fs-5">Nota: 4.5</span>
+            <span class="<?php echo $classeBadge; ?>">Nota: <?php echo $media !== null ?
+            number_format($media, 1, ',', '.') : 'Sem avaliação'; ?></span>
             <a href="#" class="btn btn-primary">Fazer Avaliação</a>
         </div>
     </div>
