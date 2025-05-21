@@ -1,8 +1,11 @@
 <?php
 include_once './empresa.php';
+include_once './dadosPerfilEmpresa.php';
 ?>
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +35,7 @@ session_start();
             </button>
             <!-- Itens que irão para o botão acima -->
             <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                <form class="d-flex mx-auto" role="search">
+                <form class="d-flex mx-auto" role="search" method="get" action="perfilEmpresa.php">
                     <input class="form-control me-2" name="nomeEmpresa" type="search" placeholder="Buscar por empresa" aria-label="Search">
                     <button class="btn btn-outline-custom" type="submit">Buscar</button>
                 </form>
@@ -85,7 +88,7 @@ session_start();
 
     <div class="container-fluid bg-light py-3 shadow">
         <div class="d-flex justify-content-between align-items-center">
-            <h2 class="mb-0">Nome da Empresa</h2>
+            <h2 class="mb-0"><?php echo $dadosEmpresa['nomeEmpresa']; ?></h2>
             <span class="badge bg-success fs-5">Nota: 4.5</span>
             <a href="#" class="btn btn-primary">Fazer Avaliação</a>
         </div>
