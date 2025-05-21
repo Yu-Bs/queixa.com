@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prodInput     = document.getElementById('nomeProduto');
   const listaProd     = document.getElementById('sugestoes');
 
-  // Autocomplete de empresas
+  /* ---------- AUTOCOMPLETE DE EMPRESAS ---------- */
   empresaInput.addEventListener('input', () => {
     const termo = empresaInput.value.trim();
     if (termo.length < 2) { listaEmpresas.innerHTML = ''; return; }
@@ -187,13 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
           const item = document.createElement('div');
           item.className = 'list-group-item list-group-item-action';
           item.textContent = nome;
-
           item.addEventListener('click', () => {
-            empresaInput.value = nome;
-            empresaSelecionada = nome;
+            empresaInput.value  = nome;
+            empresaSelecionada  = nome;
             listaEmpresas.innerHTML = '';
           });
-
           listaEmpresas.appendChild(item);
         });
       })
@@ -208,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       listaEmpresas.innerHTML = '';
   });
 
-  // Autocomplete de produtos
+  /* ---------- AUTOCOMPLETE DE PRODUTOS ---------- */
   prodInput.addEventListener('input', () => {
     const termo = prodInput.value.trim();
     if (termo.length < 2 || !empresaSelecionada) {
@@ -216,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    fetch(`buscaProdutos.php?termo=${encodeURIComponent(termo)}&empresa=${encodeURIComponent(empresaSelecionada)}`)
+    fetch(`buscaProdutos.php?termo=${encodeURIComponent(termo)}&empresaSelecionada=${encodeURIComponent(empresaSelecionada)}`)
       .then(r => r.json())
       .then(produtos => {
         listaProd.innerHTML = '';
@@ -226,15 +224,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         produtos.forEach(nome => {
-          const item = document.createElement('li'); // <li> porque #sugestoes é <ul>
+          const item = document.createElement('li');
           item.className = 'list-group-item list-group-item-action';
           item.textContent = nome;
-
           item.addEventListener('click', () => {
             prodInput.value = nome;
             listaProd.innerHTML = '';
           });
-
           listaProd.appendChild(item);
         });
       })
@@ -242,13 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         listaProd.innerHTML = '<li class="list-group-item text-danger">Erro ao buscar produtos</li>';
       });
   });
-
-  // Fecha sugestões de produto se clicar fora
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#nomeProduto') && !e.target.closest('#sugestoes'))
-      listaProd.innerHTML = '';
-  });
-});
+});   <!-- 👈  estes dois caracteres é que faltavam -->
 </script>
 
 
