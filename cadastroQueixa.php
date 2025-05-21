@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
       listaProd.innerHTML = '';
       return;
     }
-
+    
     fetch(`buscaProdutos.php?termo=${encodeURIComponent(termo)}&empresaSelecionada=${encodeURIComponent(empresaSelecionada)}`)
       .then(r => r.json())
       .then(produtos => {
