@@ -1,11 +1,11 @@
 <?php
-
+include_once './usuario.php';
 include_once 'conexaoDatabase.php';
 include_once 'empresa.php';
 session_start();
 
 
-if (isset($_GET['nomeEmpresa'])) {
+if (isset($_GET['nomeEmpresa']) && trim($_GET['nomeEmpresa']) !== '') {
     $nomeEmpresaPesquisada = mysqli_real_escape_string($conexao, $_GET['nomeEmpresa']);
 
     $sql = "SELECT * FROM empresa WHERE nomeEmpresa LIKE '%$nomeEmpresaPesquisada%'";
@@ -28,12 +28,18 @@ if (isset($_GET['nomeEmpresa'])) {
     if ($resultado && mysqli_num_rows($resultado) > 0) {
         $dadosEmpresa = mysqli_fetch_assoc($resultado);
     } else {
-        echo "Empresa não encontrada.";
+        echo "<script>
+            alert('Empresa não encontrada.');
+            window.location.replace('MenuPrincipal.php'); // volta para o menu
+            </script>";
         exit;
     }
 
 } else {
-    echo "Nenhuma empresa especificada.";
+    echo "<script>
+        alert('Nenhuma empresa especificada.');
+        window.location.replace('MenuPrincipal.php'); // volta para o menu
+        </script>";
     exit;
 }
 

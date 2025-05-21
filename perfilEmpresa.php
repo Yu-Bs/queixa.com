@@ -1,6 +1,7 @@
 <?php
 include_once './empresa.php';
 include_once './dadosPerfilEmpresa.php';
+
 ?>
 <?php
 if (session_status() === PHP_SESSION_NONE) {
@@ -22,6 +23,7 @@ if (session_status() === PHP_SESSION_NONE) {
         crossorigin="anonymous">
     <!-- CSS -->
     <link rel="stylesheet" href="css/perfilEmpresa.css">
+    <link rel="stylesheet" href="css/navbar.css">
     <title>Queixa.com</title>
 </head>
 
@@ -100,8 +102,14 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="d-flex justify-content-between align-items-center">
             <h2 class="mb-0"><?php echo $dadosEmpresa['nomeEmpresa']; ?></h2>
             <span class="<?php echo $classeBadge; ?>">Nota: <?php echo $media !== null ?
-            number_format($media, 1, ',', '.') : 'Sem avaliação'; ?></span>
-            <a href="#" class="btn btn-primary">Fazer Avaliação</a>
+                number_format($media, 1, ',', '.') : 'Sem avaliação'; ?>
+            </span>
+            <?php
+            // Exibir botão se não estiver logado OU se for usuário comum (idUsuario)
+            if (!isset($_SESSION['user']) || isset($_SESSION['user']->idUsuario)) :
+            ?>
+                <a href="cadastroQueixa.php" class="btn btn-custom">Fazer Queixa</a>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -122,16 +130,10 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
 
             <!-- Coluna direita: queixas -->
-            <div class="col-lg-8">
-                <div class="p-3 border rounded shadow-sm">
+            <div class="col-lg-8 ">
+                <div class="p-3 border rounded shadow-sm conteiner-lista-queixas">
                     <h4>Queixas dos Consumidores</h4>
-                    <div class="queixa mb-3">
-                        <strong>João:</strong> Produto com defeito...
-                    </div>
-                    <div class="queixa mb-3">
-                        <strong>Maria:</strong> Atendimento demorado...
-                    </div>
-                    <!-- Adicione mais queixas dinamicamente aqui -->
+                    <?php include 'listaQueixas.php'; ?>
                 </div>
             </div>
         </div>

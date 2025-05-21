@@ -1,13 +1,14 @@
 <?php
+include_once './conexaoDatabase.php';
+include_once './dadosPerfilEmpresa.php';
+
 // Consulta para puxar as queixas da empresa atual (idEmpresaConsulta)
-$queryQueixas = "
-    SELECT u.nomeUsuario, q.nota, q.descricao, q.dataAvalicao
-    FROM queixas q
-    JOIN usuarios u ON q.idUsuario = u.idUsuario
-    WHERE q.idEmpresa = $idEmpresaConsulta
-    ORDER BY q.dataAvalicao DESC
-    LIMIT 10
-";
+$queryQueixas = "SELECT u.nomeUsuario, a.nota, a.descricao, a.dataAvaliacao
+    FROM avaliacao a
+    JOIN usuario u ON a.idUsuario = u.idUsuario
+    WHERE a.idEmpresa = $idEmpresaConsulta
+    ORDER BY a.dataAvaliacao DESC
+    LIMIT 10";
 
 $resultQueixas = $conexao->query($queryQueixas);
 
@@ -17,7 +18,7 @@ if ($resultQueixas && $resultQueixas->num_rows > 0) {
         echo '<strong>' . htmlspecialchars($row['nomeUsuario']) . '</strong> ';
         echo '(' . number_format($row['nota'], 1) . '/10): ';
         echo htmlspecialchars($row['descricao']) . '<br>';
-        echo '<small class="text-muted">' . date('d/m/Y', strtotime($row['dataAvalicao'])) . '</small>';
+        echo '<small class="text-muted">' . date('d/m/Y', strtotime($row['dataAvaliacao'])) . '</small>';
         echo '</div>';
     }
 } else {
