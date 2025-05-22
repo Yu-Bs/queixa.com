@@ -11,8 +11,11 @@ if (strlen($termo) < 2 || empty($empresa)) {
   exit;
 }
 
-$sql = "SELECT nomeProduto FROM produto, empresa 
-        WHERE produto.idEmpresa = empresa.idEmpresa and nomeProduto LIKE '%$termo%' and nomeEmpresa = '$empresa' LIMIT 10";
+$sql = "SELECT idProduto, nomeProduto FROM produto 
+        WHERE idEmpresa = $empresa 
+          AND nomeProduto LIKE '%$termo%' 
+        LIMIT 10";
+
 
 //$stmt = mysqli_prepare($conexao, $sql);
 //mysqli_stmt_bind_param($stmt, "i", $empresa);
@@ -22,7 +25,10 @@ $result = mysqli_query($conexao,$sql);
 $produtos = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
-  $produtos[] = $row['nomeProduto'];
+  $produtos[] = [
+    'idProduto' => $row['idProduto'],
+    'nomeProduto' => $row['nomeProduto']
+  ];
 }
 
 echo json_encode($produtos);
