@@ -12,3 +12,8 @@
 3. Rode o comando:
 
    composer install
+
+## ❗ Caso não funcione o comando acima
+
+1. composer require spipu/html2pdf:5.2.8  
+2. composer require spipu/html2pdf:5.2.8 --ignore-platform-req=ext-gd (caso reclame do pacote “ext-gd”)
