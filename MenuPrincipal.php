@@ -75,6 +75,7 @@ session_start();
                                 <li><a class="dropdown-item" href="logout.php">Deslogar</a></li>
                                 <?php if (isset($_SESSION['user']->nomeEmpresa)): ?>
                                     <li><a class="dropdown-item" href="perfilEmpresa.php">Perfil da empresa</a></li>
+                                    <li><a class="dropdown-item" href="#">Relatórios</a></li>
                                 <?php else: ?>
                                     <li><a class="dropdown-item" href="minhasQueixas.php">Minhas Queixas</a></li>
                                 <?php endif; ?>
@@ -97,7 +98,7 @@ session_start();
                 <a href="perfilEmpresa.php" class="btn btn-custom-item1-empresa ">Veja as queixas da sua empresa</a>
             <?php else: ?>
                 <a href="cadastroQueixa.php" class="btn btn-custom-item1  me-2">Faça uma queixa</a>
-                <a href="#" class="btn btn-custom-item1 ">Minhas queixas</a>
+                <a href="minhasQueixas.php" class="btn btn-custom-item1 ">Minhas queixas</a>
             <?php endif; ?>
         </div>
 
