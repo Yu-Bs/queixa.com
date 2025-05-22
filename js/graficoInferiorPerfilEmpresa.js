@@ -20,7 +20,24 @@ function drawChart() {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            const chartData = google.visualization.arrayToDataTable(data);
+            const dataTable = google.visualization.arrayToDataTable(data);
+
+            // Cores para cada barra (até 5)
+            const cores = ['#3366cc', '#dc3912', '#ff9900', '#109618', '#990099'];
+
+            // Usa DataView para adicionar uma coluna de estilo
+            const view = new google.visualization.DataView(dataTable);
+            view.setColumns([
+                0, // Produto (label)
+                1, // Total de Queixas (value)
+                {
+                    type: 'string',
+                    role: 'style',
+                    calc: function (dataTable, row) {
+                        return cores[row] || '#888'; // Usa cor ou cinza padrão
+                    }
+                }
+            ]);
 
             const chartContainer = document.getElementById('graficoInf');
             const width = chartContainer.offsetWidth;
@@ -31,21 +48,20 @@ function drawChart() {
                 width: width,
                 height: 400,
                 hAxis: {
-                    title: 'Produto',       // aqui troquei o título do eixo horizontal
+                    title: 'Produto',
                     textStyle: {
                         fontSize: 12
                     }
                 },
                 vAxis: {
-                    title: 'Quantidade de Queixas',  // e aqui o título do eixo vertical
+                    title: 'Quantidade de Queixas',
                     minValue: 0
                 },
-                bar: { groupWidth: '60%' },
-                colors: ['#3366cc', '#dc3912', '#ff9900', '#109618', '#990099']
+                bar: { groupWidth: '60%' }
             };
 
             const chart = new google.visualization.ColumnChart(chartContainer);
-            chart.draw(chartData, options);
+            chart.draw(view, options);
         })
         .catch(error => {
             console.error('Erro ao carregar dados do gráfico:', error);
