@@ -94,20 +94,33 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <div class="container-fluid bg-light py-3 shadow">
         <?php
-        // Define a classe do botão conforme a nota
-        if ($media !== null && $media < 6) {
-            $classeBadge = "badge bg-danger fs-5"; // vermelho
-        } else if ($media !== null && $media >= 6) {
-            $classeBadge = "badge bg-success fs-5"; // verde
+        // Define a classe do badge conforme a nota média da empresa
+        if ($mediaEmpresa !== null && $mediaEmpresa < 6) {
+            $classeBadgeEmpresa = "badge bg-danger fs-5"; // vermelho
+        } else if ($mediaEmpresa !== null && $mediaEmpresa >= 6) {
+            $classeBadgeEmpresa = "badge bg-success fs-5"; // verde
         } else {
-            $classeBadge = "badge bg-secondary fs-5"; // cor padrão caso não tenha avaliação
+            $classeBadgeEmpresa = "badge bg-secondary fs-5"; // cor padrão caso não tenha avaliação
+        }
+
+        // Define a classe do badge conforme a nota média dos produtos
+        if ($mediaProdutos !== null && $mediaProdutos < 6) {
+            $classeBadgeProdutos = "badge bg-danger fs-5"; // vermelho
+        } else if ($mediaProdutos !== null && $mediaProdutos >= 6) {
+            $classeBadgeProdutos = "badge bg-success fs-5"; // verde
+        } else {
+            $classeBadgeProdutos = "badge bg-secondary fs-5"; // cor padrão caso não tenha avaliação
         }
         ?>
         <div class="d-flex justify-content-between align-items-center">
             <h2 class="mb-0"><?php echo $dadosEmpresa['nomeEmpresa']; ?></h2>
 
-            <span class="<?php echo $classeBadge; ?>">Nota: <?php echo $media !== null ?
-                number_format($media, 1, ',', '.') : 'Sem avaliação'; ?>
+            <span class="<?php echo $classeBadgeEmpresa; ?>">Nota média da empresa: <?php echo $mediaEmpresa !== null ?
+                number_format($mediaEmpresa, 1, ',', '.') : 'Sem avaliação'; ?>
+            </span>
+
+            <span class="<?php echo $classeBadgeProdutos; ?>">Nota média dos produtos da empresa: <?php echo $mediaProdutos !== null ?
+                number_format($mediaProdutos, 1, ',', '.') : 'Sem avaliação'; ?>
             </span>
 
             <?php

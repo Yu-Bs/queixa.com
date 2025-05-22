@@ -14,7 +14,7 @@ function drawChart() {
             const options = {
                 title: 'Quantidade de empresas cadastradas por setor',
                 legend: { position: 'right' },
-                pieSliceText: 'label',
+                pieSliceText: 'none',
                 width: 400,
                 height: 170
             };

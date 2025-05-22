@@ -25,9 +25,10 @@ function drawChart() {
             const chartData = google.visualization.arrayToDataTable(data);
 
             const options = {
-                title: 'Quantidade queixas por categoria',
+                title: 'Quantidade de queixas por categoria',
                 legend: { position: 'right' },
-                pieSliceText: 'label',
+                pieSliceText: 'none',
+                pieHole: 0.4, // Aqui vira gráfico de rosca
                 width: 400,
                 height: 170
             };

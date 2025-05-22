@@ -45,13 +45,24 @@ if (isset($_GET['nomeEmpresa']) && trim($_GET['nomeEmpresa']) !== '') {
 
 // Consulta da nota média usando a função medEmpresa
 $idEmpresaConsulta = $dadosEmpresa['idEmpresa'];
-$sqlMedia = "SELECT medEmpresa($idEmpresaConsulta) AS notaMedia";
-$resultMedia = mysqli_query($conexao, $sqlMedia);
+// Média geral da empresa (ex.: avaliações gerais da empresa)
+$sqlMediaEmpresa = "SELECT medEmpresa($idEmpresaConsulta) AS notaMediaEmpresa";
+$resultMediaEmpresa = mysqli_query($conexao, $sqlMediaEmpresa);
 
-if ($resultMedia && mysqli_num_rows($resultMedia) > 0) {
-    $media = mysqli_fetch_assoc($resultMedia)['notaMedia'];
+if ($resultMediaEmpresa && mysqli_num_rows($resultMediaEmpresa) > 0) {
+    $mediaEmpresa = mysqli_fetch_assoc($resultMediaEmpresa)['notaMediaEmpresa'];
 } else {
-    $media = 0; // ou 0, se quiser tratar como sem avaliações
+    $mediaEmpresa = 0;
+}
+
+// Média das avaliações dos produtos da empresa
+$sqlMediaProdutos = "SELECT medProdutosEmpresa($idEmpresaConsulta) AS notaMediaProdutos";
+$resultMediaProdutos = mysqli_query($conexao, $sqlMediaProdutos);
+
+if ($resultMediaProdutos && mysqli_num_rows($resultMediaProdutos) > 0) {
+    $mediaProdutos = mysqli_fetch_assoc($resultMediaProdutos)['notaMediaProdutos'];
+} else {
+    $mediaProdutos = 0;
 }
 
 ?>
