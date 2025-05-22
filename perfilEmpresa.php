@@ -28,6 +28,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- JS externo -->
     <script src="js/graficoSuperiorPerfilEmpresa.js"></script>
+    <script src="js/graficoInferiorPerfilEmpresa.js"></script>
     <title>Queixa.com</title>
 </head>
 
@@ -143,8 +144,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
                 <div class="p-3 border rounded shadow-sm">
                     <!-- Gráfico 2 -->
-                    <h5>Gráfico 2</h5>
-                    <canvas id="grafico2"></canvas>
+                    
+                    <div id="graficoInf"></div>
                 </div>
             </div>
 

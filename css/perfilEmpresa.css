@@ -51,5 +51,12 @@ body {
 
 /* Css do gráfico superior */
 #graficoSup {
-  height: 200px; /* ou o valor que desejar */
+  height: 200px; 
+}
+
+#graficoInf {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  
 }
