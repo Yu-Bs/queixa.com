@@ -22,7 +22,10 @@ if (session_status() === PHP_SESSION_NONE) {
     <!-- CSS -->
     <link rel="stylesheet" href="css/navBar.css">
     <link rel="stylesheet" href="css/listaQueixasConsumidor.css">
-    
+    <!-- Google Charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <!-- JS externo -->
+    <script src="js/graficoMinhasQueixas.js"></script>
     <title>Queixa.com</title>
 </head>
 <body>
@@ -91,8 +94,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Coluna esquerda: gráficos -->
             <div class="col-lg-4 mb-4">
                 <div class="mb-3 p-3 border rounded shadow-sm">
-                    <!-- Gráfico 1 -->
-                    <h4>Gráfico 1</h4>
+                    <!-- Gráfico -->
+                    <div id="graficoQueixa"></div>
                 </div>
             </div>
 
